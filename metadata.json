@@ -1,0 +1,5 @@
+{
+  "name": "ElevateU",
+  "description": "An AI-powered career assistant for B.Tech students featuring resume analysis, personalized mock interviews, and progress tracking.",
+  "requestFramePermissions": ["microphone"]
+}
