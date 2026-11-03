@@ -1,0 +1,14 @@
+/* Netlify Redirects for SPAs */
+/* Redirect all requests to index.html so React Router can handle them */
+/* This prevents 404 errors on page refresh */
+/* https://docs.netlify.com/routing/redirects/rewrites-proxies/#history-pushstate-and-single-page-apps */
+
+/*
+  Usage:
+  1. Create a file named '_redirects' in your 'public' folder.
+  2. Add the following line:
+*/
+
+/*
+/*  /index.html  200
+*/

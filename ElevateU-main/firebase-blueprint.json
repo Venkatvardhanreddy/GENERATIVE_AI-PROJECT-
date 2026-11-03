@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores basic details of a B.Tech student.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID from Firebase Auth" },
+        "fullName": { "type": "string", "description": "Student's full name" },
+        "email": { "type": "string", "description": "Student's email address" },
+        "degree": { "type": "string", "description": "Degree (e.g., B.Tech)" },
+        "branch": { "type": "string", "description": "Branch or specialization" },
+        "college": { "type": "string", "description": "College or university name" },
+        "gradYear": { "type": "string", "description": "Graduation year" },
+        "skills": { "type": "array", "items": { "type": "string" }, "description": "List of skills" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation timestamp" }
+      },
+      "required": ["uid", "fullName", "email", "degree", "branch", "college", "gradYear"]
+    },
+    "ResumeRecord": {
+      "title": "Resume Record",
+      "description": "Stores resume content and AI analysis feedback.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "ID of the user who owns this resume" },
+        "content": { "type": "string", "description": "Raw text content of the resume" },
+        "analysis": { "type": "object", "description": "AI-generated analysis JSON" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Submission timestamp" }
+      },
+      "required": ["userId", "content", "analysis"]
+    },
+    "InterviewRecord": {
+      "title": "Interview Record",
+      "description": "Stores details and feedback of a mock interview session.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "ID of the user who took the interview" },
+        "type": { "type": "string", "enum": ["Technical", "HR"], "description": "Type of interview" },
+        "duration": { "type": "integer", "description": "Duration in seconds" },
+        "feedback": { "type": "string", "description": "AI-generated feedback summary" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Session timestamp" }
+      },
+      "required": ["userId", "type", "duration", "feedback"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/resumes/{resumeId}": {
+      "schema": "ResumeRecord",
+      "description": "Resume analysis records"
+    },
+    "/interviews/{interviewId}": {
+      "schema": "InterviewRecord",
+      "description": "Mock interview history"
+    }
+  }
+}
